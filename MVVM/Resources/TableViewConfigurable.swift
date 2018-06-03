@@ -2,7 +2,7 @@ import Foundation
 
 protocol TableViewConfigurable {
     var tableCellRegisterInfo: [CellRegisterInfo] { get }
-    var tableBackGroundColor: ColorHex { get }
+    var tableBackgroundColor: ColorHex { get }
     var rowHeight: Double { get }
     var sectionTopTableInset: Double { get }
     var sectionLeftTableInset: Double { get }
@@ -12,7 +12,7 @@ protocol TableViewConfigurable {
 }
 
 extension TableViewConfigurable {
-    var tableBackGroundColor: ColorHex { return "FFFFFF" }
+    var tableBackgroundColor: ColorHex { return "FFFFFF" }
     var rowHeight: Double { return 44 }
     var sectionTopTableInset: Double { return 0.0 }
     var sectionLeftTableInset: Double { return 0.0 }

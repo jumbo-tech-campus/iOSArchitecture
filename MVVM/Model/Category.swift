@@ -1,8 +1,8 @@
 import Foundation
 
-struct Category {
+struct ProductCategory {
     let id: String
     let title: String
     let subCategoriesCount: Int
-    let imageUrl: String
+    let imageUrlString: String
 }

@@ -2,7 +2,7 @@ import Foundation
 
 protocol CollectionViewConfigurable {
     var collectionCellRegisterInfo: [CellRegisterInfo] { get }
-    var collectionBackGroundColor: ColorHex { get }
+    var collectionBackgroundColor: ColorHex { get }
     var isScrollDirectionVertical: Bool { get }
     var minimumLineSpacing: Double { get }
     var minimumInterItemSpacing: Double { get }
@@ -17,7 +17,7 @@ protocol CollectionViewConfigurable {
 }
 
 extension CollectionViewConfigurable {
-    var collectionBackGroundColor: ColorHex { return "FFFFFF" }
+    var collectionBackgroundColor: ColorHex { return "FFFFFF" }
     var isScrollDirectionVertical: Bool { return true }
     var minimumLineSpacing: Double { return 0.0 }
     var minimumInterItemSpacing: Double { return 0.0 }

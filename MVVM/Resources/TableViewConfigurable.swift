@@ -9,6 +9,7 @@ protocol TableViewConfigurable {
     var sectionBottomTableInset: Double { get }
     var sectionRightTableInset: Double { get }
     var allEqualTableInset: Double { get }
+    var isStylePlain: Bool { get }
 }
 
 extension TableViewConfigurable {
@@ -19,4 +20,5 @@ extension TableViewConfigurable {
     var sectionBottomTableInset: Double { return 0.0 }
     var sectionRightTableInset: Double { return 0.0 }
     var allEqualTableInset: Double { return 0.0 }
+    var isStylePlain: Bool { return true }
 }

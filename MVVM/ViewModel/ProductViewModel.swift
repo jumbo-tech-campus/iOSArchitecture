@@ -57,4 +57,7 @@ extension ProductViewModel: TableViewConfigurable {
     }
     var rowHeight: Double { return 100.0 }
     var allEqualTableInset: Double { return 10.0 }
+    var isStylePlain: Bool {
+        return productsObservable.value.count > 30
+    }
 }

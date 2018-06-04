@@ -14,8 +14,8 @@ extension UIView {
 }
 
 extension UITableView {
-    convenience init(viewModel: TableViewConfigurable, frame: CGRect, style: UITableViewStyle = .plain, datasource: UITableViewDataSource? = nil, delegate: UITableViewDelegate? = nil) {
-        self.init(frame: frame, style: style)
+    convenience init(viewModel: TableViewConfigurable, frame: CGRect, datasource: UITableViewDataSource? = nil, delegate: UITableViewDelegate? = nil) {
+        self.init(frame: frame, style: viewModel.isStylePlain ? .plain : .grouped)
 
         viewModel.tableCellRegisterInfo.forEach {
             if $0.isXib {

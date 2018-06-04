@@ -5,7 +5,7 @@ class ProductsViewController: UIViewController {
 
     var productViewModel: ProductViewModel!
     lazy var tableView: UITableView = { [unowned self] in
-        return UITableView(viewModel: self.productViewModel, frame: self.view.bounds, style: .plain, datasource: self)
+        return UITableView(viewModel: self.productViewModel, frame: self.view.bounds, datasource: self)
     }()
 
     override func viewDidLoad() {

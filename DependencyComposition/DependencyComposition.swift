@@ -1,5 +1,7 @@
+// (You can run this code in a simulator)
+
 /*
-    App start / initialization: should be in seperate object (AppController)
+ App start: currently in AppDelegate (should be in another object / AppController)
 
     - Initialize all dependencies
     - Initialize the AppDependency container with all dependencies
@@ -91,7 +93,7 @@ class FLowController {
     ViewControllers
 
     - Each Viewcontroller defines what they need through thier custom Dependencies typealias
-    - This adds clarity, easy injeciton with a complete dependency container and ability to add any depenency later on
+    - This adds clarity, easy injection with a complete dependency container and ability to add any depenency later on
     - If your familiar with dependency injection, you would otherwise need to go back through the dependency chain and pass it through all objects
 */
 

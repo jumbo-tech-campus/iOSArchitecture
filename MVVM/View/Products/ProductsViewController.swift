@@ -13,22 +13,26 @@ class ProductsViewController: UIViewController {
         title = productViewModel.screenTitle
 
         self.view.addSubview(tableView)
-        productViewModel.refreshProducts { [unowned self] in
+
+        productViewModel.productsObservable.observe { [unowned self] products in
             self.tableView.reloadData()
+            self.navigationItem.prompt = "\(products.count) products"
         }
+
+        productViewModel.refreshProducts()
     }
 }
 
 extension ProductsViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return productViewModel.productsCount
+        return productViewModel.productsObservable.value.count
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: ProductTableViewCell.self), for: indexPath) as? ProductTableViewCell else {
             return ProductTableViewCell()
         }
 
-        let product = productViewModel[indexPath.row]
+        let product = productViewModel.productsObservable.value[indexPath.row]
 
         cell.configure(with: productViewModel.refine(product))
 

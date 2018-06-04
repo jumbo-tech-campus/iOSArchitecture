@@ -2,7 +2,7 @@
     Observer pattern simplified
 
     - The Observable object is one of the core objects of reactive programming
-    - With this simplified class we can implement the observer pattern
+    - With this simplified class we can implement the observer pattern for many scenario's
     - Connect data streams to UI updates (or different connections)
     - Make the connection once and the data flow exists until the object is deallocated
 */

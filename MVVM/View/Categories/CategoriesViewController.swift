@@ -4,7 +4,7 @@ class CategoriesViewController: UIViewController {
 
     var categoryViewModel: CategoryViewModel!
     lazy var collectionView: UICollectionView = { [unowned self] in
-    return UICollectionView(viewModel: self.categoryViewModel, frame: self.view.bounds, datasource: self, delegate: self)
+        return UICollectionView(viewModel: self.categoryViewModel, frame: self.view.bounds, datasource: self, delegate: self)
     }()
 
     override func viewDidLoad() {
@@ -17,6 +17,7 @@ class CategoriesViewController: UIViewController {
         }
     }
 }
+
 
 extension CategoriesViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {

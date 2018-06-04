@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C7495C2D20C5520D00BAC117 /* Observable.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7495C2C20C5520D00BAC117 /* Observable.swift */; };
 		C764990820C45A09006040B6 /* CategoriesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C764990720C45A09006040B6 /* CategoriesViewController.swift */; };
 		C774961820C462BA0088316A /* ProductsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C774961720C462BA0088316A /* ProductsViewController.swift */; };
 		C774961A20C468020088316A /* ProductTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C774961920C468020088316A /* ProductTableViewCell.swift */; };
@@ -43,6 +44,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		C7495C2C20C5520D00BAC117 /* Observable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Observable.swift; sourceTree = "<group>"; };
 		C764990720C45A09006040B6 /* CategoriesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesViewController.swift; sourceTree = "<group>"; };
 		C766714420C49CF700DCEE41 /* Observable.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = Observable.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		C774961720C462BA0088316A /* ProductsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductsViewController.swift; sourceTree = "<group>"; };
@@ -191,6 +193,7 @@
 				C7ED653620C3EF29005AF926 /* ProductsServiceSingleton.swift */,
 				C7ED652020C3DB42005AF926 /* CollectionViewConfigurable.swift */,
 				C7ED652120C3DB42005AF926 /* TableViewConfigurable.swift */,
+				C7495C2C20C5520D00BAC117 /* Observable.swift */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -367,6 +370,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C764990820C45A09006040B6 /* CategoriesViewController.swift in Sources */,
+				C7495C2D20C5520D00BAC117 /* Observable.swift in Sources */,
 				C7ED653320C3E8B9005AF926 /* ProductViewModel.swift in Sources */,
 				C7ED652220C3DB42005AF926 /* CollectionViewConfigurable.swift in Sources */,
 				C774961A20C468020088316A /* ProductTableViewCell.swift in Sources */,

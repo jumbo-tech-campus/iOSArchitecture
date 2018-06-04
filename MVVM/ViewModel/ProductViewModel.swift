@@ -10,25 +10,16 @@ class ProductViewModel {
         let imageUrl: URL
         let productCategory: String
     }
-    private var products = [Product]()
+    private (set) var productsObservable = Observable<[Product]>([])
     private var productCategory: ProductCategory!
-    var productsCount: Int {
-        return products.count
-    }
     let screenTitle = "Products"
 
     init(productCategory: ProductCategory) {
         self.productCategory = productCategory
     }
 
-    subscript (index: Int) -> Product {
-        return products[index]
-    }
-
-    func refreshProducts(completion: () -> Void) {
-        products = ProductsServiceSingleton.shared.getProducts(categoryId: productCategory.id)
-
-        completion()
+    func refreshProducts() {
+        productsObservable.value = ProductsServiceSingleton.shared.getProducts(categoryId: productCategory.id)
     }
 
     func refine(_ product: Product) -> PresentableProduct {

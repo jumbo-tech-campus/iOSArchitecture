@@ -44,6 +44,7 @@
 
 /* Begin PBXFileReference section */
 		C764990720C45A09006040B6 /* CategoriesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesViewController.swift; sourceTree = "<group>"; };
+		C766714420C49CF700DCEE41 /* Observable.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = Observable.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		C774961720C462BA0088316A /* ProductsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductsViewController.swift; sourceTree = "<group>"; };
 		C774961920C468020088316A /* ProductTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductTableViewCell.swift; sourceTree = "<group>"; };
 		C774961D20C47C720088316A /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
@@ -112,9 +113,10 @@
 		C77ABA1220C13FE60037053D = {
 			isa = PBXGroup;
 			children = (
-				C7ED64EA20C3CD22005AF926 /* DependencyComposition */,
 				C7ED64C620C3CCEE005AF926 /* MVVM */,
 				C7ED64DB20C3CCF0005AF926 /* MVVMTests */,
+				C7ED64EA20C3CD22005AF926 /* DependencyComposition */,
+				C766714420C49CF700DCEE41 /* Observable.playground */,
 				C77ABA1C20C13FE60037053D /* Products */,
 			);
 			sourceTree = "<group>";

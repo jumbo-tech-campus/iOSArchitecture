@@ -29,6 +29,14 @@ class Observable<T> {
     }
 }
 
+let observableInt = Observable<Int>(0)
+
+observableInt.observe {
+    print("Value changed: \($0)")
+}
+
+observableInt.value = 1
+
 class ViewModel {
     let observableString: Observable<String> = Observable("")
 

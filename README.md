@@ -1,5 +1,5 @@
-# iOS Patterns
-This project provides simplified implementations of common iOS patterns for experimentation.
+# iOS Architecture Experimentation
+This project provides simplified implementations of common iOS design and architectural patterns for experimentation.
 
 ## MVVM
 The `MVVM` target provides an example o  how MVVM could be implemented and showcases some handy techniques to remove iOS boiler plate code. A related test target shows how just testing the ViewModel covers the complete business logic, including oftern ignored UI data when implementing `MVC`.

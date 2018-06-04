@@ -1,3 +1,7 @@
+/*
+    - Some of these extensions remove an anormous amount of boiler plate (think of all the table and collecitonview clutter in ViewControllers)
+*/
+
 import UIKit
 
 extension UIView {

@@ -1,3 +1,8 @@
+/*
+    - This is a common way to expose services to the app (not recommended, but easy)
+    - See DependencyComposition target for a safer way with equal the amount of access
+*/
+
 import Foundation
 
 final class ProductsServiceSingleton {

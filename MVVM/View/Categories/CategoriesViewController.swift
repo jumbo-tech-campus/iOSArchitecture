@@ -18,6 +18,10 @@ class CategoriesViewController: UIViewController {
     }
 }
 
+/*
+    - The initialization and navigation code belong to a flowcontroller
+    - This is business logic with navigation rules that can become big and nasty
+*/
 
 extension CategoriesViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
@@ -32,6 +36,10 @@ extension CategoriesViewController: UICollectionViewDelegate {
         navigationController?.pushViewController(nextVc, animated: true)
     }
 }
+
+/*
+    - Separating UIKit datasources into their own class is better than this quick example
+*/
 
 extension CategoriesViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {

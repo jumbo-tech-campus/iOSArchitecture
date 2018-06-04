@@ -39,6 +39,11 @@ class CategoryViewModel {
     }
 }
 
+/*
+    - This reusable protocol can be done for any repetetive UI (boiler plate)
+    - Imagine a "FooterViewConfigurable" for all VC's with a footerview with slightly different UI characteristics
+*/
+
 extension CategoryViewModel: CollectionViewConfigurable {
     var collectionCellRegisterInfo: [CellRegisterInfo] {
         let cellClass = CategoryCollectionViewCell.self

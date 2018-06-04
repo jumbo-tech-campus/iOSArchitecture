@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		C7495C2D20C5520D00BAC117 /* Observable.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7495C2C20C5520D00BAC117 /* Observable.swift */; };
 		C7495C3020C5618300BAC117 /* TestHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7495C2E20C5615C00BAC117 /* TestHelper.swift */; };
+		C7495C3220C566BC00BAC117 /* CategoryViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7495C3120C566BC00BAC117 /* CategoryViewModelTests.swift */; };
+		C7495C3420C567B000BAC117 /* ProductTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7495C3320C567B000BAC117 /* ProductTests.swift */; };
+		C7495C3620C567C100BAC117 /* ProductCategoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7495C3520C567C100BAC117 /* ProductCategoryTests.swift */; };
 		C764990820C45A09006040B6 /* CategoriesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C764990720C45A09006040B6 /* CategoriesViewController.swift */; };
 		C774961820C462BA0088316A /* ProductsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C774961720C462BA0088316A /* ProductsViewController.swift */; };
 		C774961A20C468020088316A /* ProductTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C774961920C468020088316A /* ProductTableViewCell.swift */; };
@@ -47,6 +50,9 @@
 /* Begin PBXFileReference section */
 		C7495C2C20C5520D00BAC117 /* Observable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Observable.swift; sourceTree = "<group>"; };
 		C7495C2E20C5615C00BAC117 /* TestHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestHelper.swift; sourceTree = "<group>"; };
+		C7495C3120C566BC00BAC117 /* CategoryViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryViewModelTests.swift; sourceTree = "<group>"; };
+		C7495C3320C567B000BAC117 /* ProductTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductTests.swift; sourceTree = "<group>"; };
+		C7495C3520C567C100BAC117 /* ProductCategoryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductCategoryTests.swift; sourceTree = "<group>"; };
 		C764990720C45A09006040B6 /* CategoriesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesViewController.swift; sourceTree = "<group>"; };
 		C766714420C49CF700DCEE41 /* Observable.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = Observable.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		C774961720C462BA0088316A /* ProductsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductsViewController.swift; sourceTree = "<group>"; };
@@ -104,6 +110,24 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		C7495C3720C567CF00BAC117 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				C7495C3120C566BC00BAC117 /* CategoryViewModelTests.swift */,
+				C774962420C48F550088316A /* ProductViewModelTests.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		C7495C3820C567D600BAC117 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				C7495C3520C567C100BAC117 /* ProductCategoryTests.swift */,
+				C7495C3320C567B000BAC117 /* ProductTests.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		C774961620C462900088316A /* Products */ = {
 			isa = PBXGroup;
 			children = (
@@ -150,7 +174,8 @@
 		C7ED64DB20C3CCF0005AF926 /* MVVMTests */ = {
 			isa = PBXGroup;
 			children = (
-				C774962420C48F550088316A /* ProductViewModelTests.swift */,
+				C7495C3720C567CF00BAC117 /* ViewModel */,
+				C7495C3820C567D600BAC117 /* Model */,
 				C7495C2E20C5615C00BAC117 /* TestHelper.swift */,
 				C7ED64DE20C3CCF0005AF926 /* Info.plist */,
 			);
@@ -395,6 +420,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				C774962520C48F550088316A /* ProductViewModelTests.swift in Sources */,
+				C7495C3420C567B000BAC117 /* ProductTests.swift in Sources */,
+				C7495C3220C566BC00BAC117 /* CategoryViewModelTests.swift in Sources */,
+				C7495C3620C567C100BAC117 /* ProductCategoryTests.swift in Sources */,
 				C7495C3020C5618300BAC117 /* TestHelper.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

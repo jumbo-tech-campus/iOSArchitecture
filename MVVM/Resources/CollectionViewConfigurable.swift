@@ -1,3 +1,7 @@
+/*
+    - Create this protocol once and reuse it through the app of defining the UI
+*/
+
 import Foundation
 
 protocol CollectionViewConfigurable {

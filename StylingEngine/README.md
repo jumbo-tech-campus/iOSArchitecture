@@ -65,7 +65,7 @@ label.style(as: .headerLabel)
 ```
 
 ``` objective-c
-[label styleAs: JMBViewStyleHeaderLabel];
+[label styleAs:JMBViewStyleHeaderLabel];
 ```
 
 ## Objective-C

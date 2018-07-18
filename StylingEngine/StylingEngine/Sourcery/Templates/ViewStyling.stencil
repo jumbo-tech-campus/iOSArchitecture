@@ -1,0 +1,25 @@
+import UIKit
+
+{% for type in types.all %}
+{% if type.name == "ViewStyling" %}
+@objc enum JMBViewStyle: Int {
+    {% for var in type.staticVariables %}
+    case {{ var.name }}
+    {% endfor %}
+}
+
+@objc
+extension UIView {
+    func styleAs(_ style: JMBViewStyle) {
+        switch style {
+        {% for var in type.staticVariables %}
+        case .{{ var.name }}:
+            self.style(as: .{{ var.name }})
+            break
+        {% endfor %}
+        }
+    }
+}
+
+{% endif %}
+{% endfor %}

@@ -1,0 +1,5 @@
+sources:
+    - StylingEngine
+templates:
+    - StylingEngine/Sourcery/Templates
+output: StylingEngine/Sourcery/Generated

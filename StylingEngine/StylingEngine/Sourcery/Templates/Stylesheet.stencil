@@ -1,0 +1,25 @@
+import UIKit
+
+@objc
+class JMBStylesheet: NSObject {
+    {% for type in types.implementing.ObjcFloat %}
+    // MARK: {{ type.name }}
+    {% for variable in type.staticVariables %}
+    static var {{variable.name}}Dimension: CGFloat { return {{type.name}}.{{variable.name}} }
+    {% endfor %}
+    {% endfor %}
+
+    {% for type in types.implementing.ObjcColor %}
+    // MARK: {{ type.name }}
+    {% for variable in type.staticVariables %}
+    static var {{variable.name}}Color: UIColor { return {{type.name}}.{{variable.name}} }
+    {% endfor %}
+    {% endfor %}
+
+    {% for type in types.implementing.ObjcFont %}
+    // MARK: {{ type.name }}
+    {% for variable in type.staticVariables %}
+    static var {{variable.name}}Font: UIFont { return {{type.name}}.{{variable.name}} }
+    {% endfor %}
+    {% endfor %}
+}

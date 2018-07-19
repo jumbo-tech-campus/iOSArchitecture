@@ -2,10 +2,10 @@ import UIKit
 
 // Heavily based on https://hackernoon.com/simple-stylesheets-in-swift-6dda57b5b00d
 
-struct ViewStyling<View> {
-    let style: (View) -> Void
+struct ViewStyling<ViewType> {
+    let style: (ViewType) -> Void
 
-    init(_ style: @escaping (View) -> Void) {
+    init(_ style: @escaping (ViewType) -> Void) {
         self.style = style
     }
 }

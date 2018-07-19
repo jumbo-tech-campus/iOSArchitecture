@@ -5,6 +5,7 @@ import UIKit
 
 @objc enum JMBViewStyle: Int {
     case promotionLabel
+    case headerLabel
     case backgroundView
     case promotionView
 }
@@ -15,6 +16,9 @@ extension UIView {
         switch style {
         case .promotionLabel:
             self.style(as: .promotionLabel)
+            break
+        case .headerLabel:
+            self.style(as: .headerLabel)
             break
         case .backgroundView:
             self.style(as: .backgroundView)

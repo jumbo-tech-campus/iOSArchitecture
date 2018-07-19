@@ -8,7 +8,7 @@
 
 import UIKit
 
-extension ViewStyling where View == UIView {
+extension ViewStyling where ViewType == UIView {
     static var backgroundView = ViewStyling {
         $0.backgroundColor = Stylesheet.Colors.green
     }

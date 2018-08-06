@@ -10,7 +10,7 @@ import UIKit
 
 extension ViewStyling where ViewType == UIView {
     static var backgroundView = ViewStyling {
-        $0.backgroundColor = Stylesheet.Colors.green
+        $0.backgroundColor = Stylesheet.Colors.red
     }
 
     static var promotionView = ViewStyling {

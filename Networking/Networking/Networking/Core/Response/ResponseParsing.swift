@@ -15,7 +15,7 @@ protocol ResponseParsing {
     func parseProductDetails(from response: Response) throws -> Product
 }
 
-enum ResponseParsingError: Error {
+enum ResponseParsingError: Error, Hashable {
     case noData
     case api(code: String, message: String)
 }

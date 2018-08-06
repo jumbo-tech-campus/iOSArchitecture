@@ -8,5 +8,4 @@
 
 protocol ApiConfiguring {
     var host: String { get }
-    var apiVersion: String { get }
 }

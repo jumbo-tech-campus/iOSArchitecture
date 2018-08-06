@@ -20,9 +20,9 @@ class UxApiResponseParser: ResponseParsing {
     func parseProductDetails(from response: Response) throws -> Product {
         let data = try validateResponse(response)
 
-        let response = try JSONDecoder().decode(ResponseData<Product>.self, from: data)
+        let response = try JSONDecoder().decode(ProductDetailsResponseData.self, from: data)
 
-        return response.data
+        return response.product.data
     }
 
     func validateResponse(_ response: Response) throws -> Data {
@@ -41,6 +41,10 @@ class UxApiResponseParser: ResponseParsing {
 struct ProductListResponseData: Codable {
     let products: PaginatedResponseData<Product>
     let filters: ResponseData<[ProductFilter]>
+}
+
+struct ProductDetailsResponseData: Codable {
+    let product: ResponseData<Product>
 }
 
 struct UxApiError: Codable {

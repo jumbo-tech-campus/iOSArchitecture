@@ -13,7 +13,6 @@ class UxApiRequestBuilder: RequestBuilding {
         apiConfiguration = configuration
     }
 
-
     func specification(for apiCall: ApiCall) -> RequestSpecification {
         switch apiCall {
         case .product(let productCall): return specification(for: productCall)

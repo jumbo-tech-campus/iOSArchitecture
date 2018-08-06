@@ -1,5 +1,5 @@
 //
-//  UxAPIResponseParser_SwiftyJson.swift
+//  UxAPIResponseParser_SwiftyJSON.swift
 //  Networking
 //
 //  Created by Ruud Puts on 03/08/2018.
@@ -9,7 +9,7 @@
 import Foundation
 import SwiftyJSON
 
-class UxAPIResponseParser_SwiftyJson: ResponseParsing {
+class UxAPIResponseParser_SwiftyJSON: ResponseParsing {
     func parseProducts(from response: Response) throws -> [Product] {
         let data = try validateResponse(response)
 
@@ -43,7 +43,7 @@ class UxAPIResponseParser_SwiftyJson: ResponseParsing {
     }
 }
 
-private extension UxAPIResponseParser_SwiftyJson {
+private extension UxAPIResponseParser_SwiftyJSON {
     func json(from data: Data) throws -> JSON {
         return try JSON(data: data)
     }

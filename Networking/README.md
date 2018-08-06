@@ -69,3 +69,12 @@ Extra `ReqeustExecutor` could be the starting point to wrap the output from `Req
 
 With the current implementation implementing something like caching would happen on each location where a certain `Gateway` is used, which is not prefered.
 To overcome this the `Gateway` could be wrapped into an `Interactor`
+
+## Installation
+
+```
+$ git clone https://github.com/jumbo-tech-campus/iOSArchitecture
+$ cd iOSArchitecture/Networking
+$ pod install
+$ open Networking.xcworkspace
+```

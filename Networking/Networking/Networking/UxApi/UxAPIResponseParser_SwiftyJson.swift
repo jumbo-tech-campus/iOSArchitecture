@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import SwiftyJSON
 
 class UxAPIResponseParser_SwiftyJson: ResponseParsing {
     func parseProducts(from response: Response) throws -> [Product] {

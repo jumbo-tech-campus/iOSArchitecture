@@ -1,0 +1,14 @@
+platform :ios, '11.0'
+
+target 'Networking' do
+  use_frameworks!
+
+  pod 'SwiftyJSON', '~> 4.0'
+end
+
+target 'NetworkingTests' do
+  use_frameworks!
+
+  pod 'Quick', '~> 1.3'
+  pod 'Nimble', '~> 6.0.0'
+end

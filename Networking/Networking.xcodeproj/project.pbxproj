@@ -50,6 +50,8 @@
 		42C30CBA2113256B0041DC4C /* RequestClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42C30CB92113256B0041DC4C /* RequestClient.swift */; };
 		42C30CBD211325CB0041DC4C /* URLSessionRequestClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42C30CBC211325CB0041DC4C /* URLSessionRequestClient.swift */; };
 		42C30CBF2113277B0041DC4C /* RequestExecutor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42C30CBE2113277B0041DC4C /* RequestExecutor.swift */; };
+		42DB77002119764D004B61E8 /* ProductListGatewaySpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42DB76FF2119764D004B61E8 /* ProductListGatewaySpec.swift */; };
+		42DB770221197DB9004B61E8 /* ProductDetailsListGateway.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42DB770121197DB9004B61E8 /* ProductDetailsListGateway.swift */; };
 		6C9255575BA7BC98C3C8E6BB /* Pods_Networking.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 09D9F0758A2B5E8A122FE1CA /* Pods_Networking.framework */; };
 /* End PBXBuildFile section */
 
@@ -115,6 +117,8 @@
 		42C30CB92113256B0041DC4C /* RequestClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestClient.swift; sourceTree = "<group>"; };
 		42C30CBC211325CB0041DC4C /* URLSessionRequestClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLSessionRequestClient.swift; sourceTree = "<group>"; };
 		42C30CBE2113277B0041DC4C /* RequestExecutor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestExecutor.swift; sourceTree = "<group>"; };
+		42DB76FF2119764D004B61E8 /* ProductListGatewaySpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductListGatewaySpec.swift; sourceTree = "<group>"; };
+		42DB770121197DB9004B61E8 /* ProductDetailsListGateway.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductDetailsListGateway.swift; sourceTree = "<group>"; };
 		C1CC3992AFF041E4225A1761 /* Pods_NetworkingTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_NetworkingTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CA7EEA758825A60BFB176DD6 /* Pods-Networking.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Networking.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Networking/Pods-Networking.debug.xcconfig"; sourceTree = "<group>"; };
 		E22028C686BDE629F4150E5B /* Pods-Networking.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Networking.release.xcconfig"; path = "Pods/Target Support Files/Pods-Networking/Pods-Networking.release.xcconfig"; sourceTree = "<group>"; };
@@ -289,6 +293,7 @@
 			isa = PBXGroup;
 			children = (
 				42505F8221187A8B002558E6 /* UxApi */,
+				42DB76FE2119762C004B61E8 /* Gateways */,
 				42505F772118758C002558E6 /* Extensions */,
 				42BA432D211886F1005B2E7D /* Executing */,
 			);
@@ -340,6 +345,15 @@
 				42C30CBC211325CB0041DC4C /* URLSessionRequestClient.swift */,
 			);
 			path = Executing;
+			sourceTree = "<group>";
+		};
+		42DB76FE2119762C004B61E8 /* Gateways */ = {
+			isa = PBXGroup;
+			children = (
+				42DB76FF2119764D004B61E8 /* ProductListGatewaySpec.swift */,
+				42DB770121197DB9004B61E8 /* ProductDetailsListGateway.swift */,
+			);
+			path = Gateways;
 			sourceTree = "<group>";
 		};
 		7EC70BD8A6C8F49E5AF0FFCF /* Pods */ = {
@@ -586,9 +600,11 @@
 				42505F812118779F002558E6 /* ResponseParsingMock.swift in Sources */,
 				42505F9821188415002558E6 /* UxApiResponseParser_SwiftyJSON_Spec.swift in Sources */,
 				42505F7F21187765002558E6 /* RequestClientMock.swift in Sources */,
+				42DB770221197DB9004B61E8 /* ProductDetailsListGateway.swift in Sources */,
 				42505F8621187CF9002558E6 /* UxApiResponseParserSpec.swift in Sources */,
 				42BA432F21188704005B2E7D /* RequestExecutorSpec.swift in Sources */,
 				42505F79211875A3002558E6 /* StringSpec.swift in Sources */,
+				42DB77002119764D004B61E8 /* ProductListGatewaySpec.swift in Sources */,
 				42505F7D21187759002558E6 /* RequestExecutingMock.swift in Sources */,
 				42505F6C2118723F002558E6 /* NetworkingTests.swift in Sources */,
 			);

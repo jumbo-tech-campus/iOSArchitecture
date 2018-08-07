@@ -19,3 +19,31 @@ enum ApiCall {
         case logout
     }
 }
+
+extension ApiCall: Hashable {
+    var hashValue: Int {
+        switch self {
+        case .product(let productCall):
+            var productCallHash: Int
+
+            switch productCall {
+            case .list: productCallHash = 0
+            case .details(_): productCallHash = 1
+            }
+
+            return Int("1\(productCallHash)") ?? 1
+        case .user(let userCall):
+            var userCallHash: Int
+
+            switch userCall {
+            case .logout: userCallHash = 0
+            }
+
+            return Int("1\(userCallHash)") ?? 1
+        }
+    }
+
+    static func == (lhs: ApiCall, rhs: ApiCall) -> Bool {
+        return lhs.hashValue == rhs.hashValue
+    }
+}

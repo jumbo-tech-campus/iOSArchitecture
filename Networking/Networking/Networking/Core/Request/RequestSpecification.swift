@@ -15,13 +15,16 @@ struct RequestSpecification {
     let method: Request.Method
     let parameters: [String: String]?
 
+    let headers: [String: String]?
+
     let data: Data?
 
-    init(host: String = "", path: String = "", method: Request.Method = .get, parameters: [String: String] = [:], data: Data? = nil) {
+    init(host: String = "", path: String = "", method: Request.Method = .get, parameters: [String: String] = [:], headers: [String: String] = [:], data: Data? = nil) {
         self.host = host
         self.path = path
         self.method = method
         self.parameters = parameters
+        self.headers = headers
         self.data = data
     }
 }
@@ -32,6 +35,7 @@ extension RequestSpecification: Equatable {
             && lhs.path == rhs.path
             && lhs.method == rhs.method
             && lhs.parameters == rhs.parameters
+            && lhs.headers == rhs.headers
             && lhs.data == rhs.data
     }
 }

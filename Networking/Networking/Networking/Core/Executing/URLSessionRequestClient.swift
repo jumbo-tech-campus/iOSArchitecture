@@ -42,6 +42,7 @@ extension Request {
 
         var request = URLRequest(url: url)
         request.httpMethod = self.method.rawValue
+        request.allHTTPHeaderFields = self.headers
 
         return request
     }

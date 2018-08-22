@@ -33,6 +33,19 @@
     [detailsGateway objcExecuteWithCompletion:^(Product *product) {
         NSLog(@"Fetched product details %@ - %@", product.identifier, product.title);
     }];
+
+
+    NSString *imageUrl = @"https://www.jumbo.com/INTERSHOP/static/WFS/Jumbo-Grocery-Site/-/Jumbo-Grocery/nl_NL/CMS/Images/2018/Thema/Zomer/Homepage/week-26/Zomer-homepage-wk26-content-Onlinebestellenzondertekst.png";
+    DownloadImageGateway *imageGateway = [gatewayFactory makeDownloadImageGatewayFrom:imageUrl];
+    [imageGateway objcExecuteWithCompletion:^(UIImage *image) {
+        NSLog(@"Fetched image of size %@", NSStringFromCGSize(image.size));
+    }];
+
+    gatewayFactory.authorizationToken = @"My_JWT_Token";
+    detailsGateway = [gatewayFactory makeProductDetailsGatewayFor:missingProduct];
+    [detailsGateway objcExecuteWithCompletion:^(Product *product) {
+        NSLog(@"Fetched product details %@ - %@", product.identifier, product.title);
+    }];
 }
 
 @end

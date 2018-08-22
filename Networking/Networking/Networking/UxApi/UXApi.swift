@@ -9,6 +9,7 @@
 class UxAPI: ApiConfiguring {
     let endpoint: String
     let apiVersion: String
+    var authToken: String?
 
     init(endpoint: String, apiVersion: String = "V3") {
         self.endpoint = endpoint

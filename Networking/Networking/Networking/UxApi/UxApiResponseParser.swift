@@ -6,7 +6,7 @@
 //  Copyright © 2018 Ruud Puts. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 class UxApiResponseParser: ResponseParsing {
     func parseProducts(from response: Response) throws -> [Product] {
@@ -23,6 +23,16 @@ class UxApiResponseParser: ResponseParsing {
         let response = try JSONDecoder().decode(ProductDetailsResponseData.self, from: data)
 
         return response.product.data
+    }
+
+    func parseImage(from response: Response) throws -> UIImage {
+        let data = try validateResponse(response)
+
+        guard let image = UIImage(data: data) else {
+            throw ResponseParsingError.invalidData
+        }
+
+        return image
     }
 
     func validateResponse(_ response: Response) throws -> Data {

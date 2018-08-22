@@ -7,8 +7,13 @@
 //
 
 enum ApiCall {
+    case image(ImageCall)
     case product(ProductCall)
     case user(UserCall)
+
+    enum ImageCall {
+        case custom(url: String)
+    }
 
     enum ProductCall {
         case list
@@ -23,6 +28,14 @@ enum ApiCall {
 extension ApiCall: Hashable {
     var hashValue: Int {
         switch self {
+        case .image(let imageCall):
+            var imageCallHash: Int
+
+            switch imageCall {
+            case .custom(_): imageCallHash = 0
+            }
+
+            return Int("1\(imageCallHash)") ?? 1
         case .product(let productCall):
             var productCallHash: Int
 
@@ -31,7 +44,7 @@ extension ApiCall: Hashable {
             case .details(_): productCallHash = 1
             }
 
-            return Int("1\(productCallHash)") ?? 1
+            return Int("2\(productCallHash)") ?? 2
         case .user(let userCall):
             var userCallHash: Int
 
@@ -39,7 +52,7 @@ extension ApiCall: Hashable {
             case .logout: userCallHash = 0
             }
 
-            return Int("1\(userCallHash)") ?? 1
+            return Int("3\(userCallHash)") ?? 3
         }
     }
 

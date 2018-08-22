@@ -12,6 +12,7 @@ import Foundation
 class Request: NSObject {
     var method: Method
     var url: String
+    var headers: [String: String]?
     var data: Data?
 
     public enum Method: String {
@@ -21,9 +22,10 @@ class Request: NSObject {
         case delete
     }
 
-    init(url: String, method: Method, data: Data?) {
+    init(url: String, method: Method, headers: [String: String]?, data: Data?) {
         self.url = url
         self.method = method
+        self.headers = headers
         self.data = data
     }
 
@@ -31,9 +33,10 @@ class Request: NSObject {
                      path: String,
                      parameters: [String: String]?,
                      method: Method,
+                     headers: [String: String]?,
                      data: Data?) {
         let url = "\(host)/\(path)".inject(parameters: parameters ?? [:])
 
-        self.init(url: url, method: method, data: data)
+        self.init(url: url, method: method, headers: headers, data: data)
     }
 }

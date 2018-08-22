@@ -10,24 +10,43 @@ import Foundation
 
 @objc
 protocol RequestGatewayProducing {
+    var authorizationToken: String? { get set }
+
     func makeProductListGateway() -> ProductListGateway
     func makeProductDetailsGateway(for product: Product) -> ProductDetailsGateway
+
+    func makeDownloadImageGateway(from url: String) -> DownloadImageGateway
 }
 
 @objc
 class RequestGatewayFactory: NSObject, RequestGatewayProducing {
+    var authorizationToken: String?
     lazy var apiConfiguration = UxAPI(endpoint: "https://mobileapi.jumbo.com", apiVersion: "V3")
 
     func makeProductListGateway() -> ProductListGateway {
-        return ProductListGateway(builder: UxApiRequestBuilder(configuration: apiConfiguration),
+        return ProductListGateway(builder: makeRequestBuilder(),
                                   executor: RequestExecutor(),
                                   parser: UxApiResponseParser())
     }
 
     func makeProductDetailsGateway(for product: Product) -> ProductDetailsGateway {
         return ProductDetailsGateway(product: product,
-                                     builder: UxApiRequestBuilder(configuration: apiConfiguration),
+                                     builder: makeRequestBuilder(),
                                      executor: RequestExecutor(),
                                      parser: UxApiResponseParser())
+    }
+
+    func makeDownloadImageGateway(from url: String) -> DownloadImageGateway {
+        return DownloadImageGateway(imageUrl: url,
+                                    builder: makeRequestBuilder(),
+                                    executor: RequestExecutor(),
+                                    parser: UxApiResponseParser())
+    }
+}
+
+private extension RequestGatewayFactory {
+    func makeRequestBuilder() -> RequestBuilding {
+        return UxApiRequestBuilder(configuration: apiConfiguration,
+                                   authorizationToken: authorizationToken)
     }
 }

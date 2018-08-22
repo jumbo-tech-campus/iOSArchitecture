@@ -26,6 +26,7 @@ extension RequestBuilding {
             path: spec.path,
             parameters: spec.parameters,
             method: spec.method,
+            headers: spec.headers,
             data: spec.data
         )
     }

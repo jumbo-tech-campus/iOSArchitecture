@@ -1,12 +1,17 @@
 # iOS Networking
-This project contains a genric networking setup for Swift, but can also be called upon from Objective-C.
 
-Key in this proposal are;
-* Only 1 class will build requests
+This project contains a generic networking setup for Swift, but can also be called upon from Objective-C.
+
+Key in this proposal are:
+
 * Only 1 class will execute requests
 * Only 1 class will parse requests
+* `RequestExecutor` can be extended easily
+* `RequestClient` can be extended easily
+* `RequestParser` can be extended easily
 
-The proposal is build upon
+The proposal is build upon:
+
 * Protocol Oriented Programming
 * SOLID's separation of concerns
 
@@ -14,61 +19,117 @@ Together they make the code fully testable and can be developed & expanded test-
 
 ## Architecture
 
-All possible requests are defined as an `ApiCall`, which is an enum consisting of groups of calls (i.e. `product` calls & `user` calls). This `ApiCall` class is used by `RequestBuilding` to define a protocol to create the requests.
+The architecture has 6 different entities, that are defined at *Application level* or *Core level*.
 
-The `RequestBuilding` protocol is implemented by `UxApiRequestBuilder`, which will define all `RequestSpecification` instances to create the requests from.
-`RequestSpecification` is a struct with a lot of default values for it's init method, making it handy and compact in use for the `RequestBuilder`.
+#### App level
 
-`RequestExecutor` is the class which will actually trigger the calls and will execute them via `RequestClient`. RequestClient is a protocol to wrap arround URLSession, giving us the ability to quickly replace the HTTP framework we use with i.e. `Alamofire`.
+* **`Gateway`**: is the entry point to the network layer, a unique class the defines the relevant methods to start a network call quickly. In our implementation, we will call it `UxApiGateway` and we will create an extension for every service set we have (*products*, *user*, ...)
+* **`Request`**: contains all the necessary information perform a network call. A `Request` is the result of the of an `Environment` and a `Route`
 
-`ResponseParser`, which implemented in `UxApiResponseParser`, which parses the data retrieved by `RequestExecutor`. For each `ApiCall` there will be a dedicated method to call and parse the data.
+#### Core level
 
-Last we have 
+* **`RequestOperation`**: responsible to provide and manage the correct instances of `Request`, `Executor` and `Parser`.
+* **`RequestExecutor`**: responsible to perform the request using the correct `Client`. An extended version of the Executor can be used to add more business logic, like caching or reactive programming functionality.
+* **`RequestClient`**: responsible to execute the request. The default `Client` uses thr `URLSession` component but a different `Client` can be created to use different system or libraries (like _Alamofire_ or similar).
+* **`RequestParser`**: responsible to parse the response.
 
-Note; Naming is mostly derived from the VIP architecture. All naming is up for change.
+The **Core** is designed around the `RequestOperation`. It defines its variable using **swift's generics**, in this way a developer can instantiate and use different `RequestExecutor`, `RequestClient` and `RequestParser` instances to add more functionality and capabilities to the Network Layer.
+
 
 ## Dataflow
 
-The usual flow to using this proposal would be;
-1. Create an instance of `GatewayProducing`, i.e. in a `DependencyComposition` pattern
-2. Request the `GatewayProducing` instance to create the gateway
-3. Call `execute` on the produced gateway
-4. In `execute`'s completion block handle the data as nessecary
+The usual flow to using this proposal would be:
 
-When a `GatewayProducing` creates a gateway, it will;
-1. Create an instance of `RequestBuilding`
-2. Create an instance of `RequestExecuting`
-3. Create an instance of `RequestParsing`
-4. Create an instance of `RequestGateway`, passing the builder, executor & parser to it.
+1. Create an extension for the `UxApiGateway` for the relevant service set, like *Products* or *User*. If the relevant extension already exists, add a proper method for the service you want to use:
 
-When a `RequestGateway` is executed, it will;
-1. Ask the `RequestBuilding` to produce the request to execute
-2. Execute the build request via `RequestExecuting`
-3. Parse the data via `ResponseParsing`
-4. Call it's completion closure with the result of `3.`
+	```
+	// BASE CLASS FOR THE JUMBO APP
+	@objc 
+	class UxApiGateway: NSObject {}
+	```
+	
+	```
+	// EXTENSION FOR PRODUCT GATEWAY
+	@objc
+	protocol ProductsGateway {
+	    @objc func getProducts(onSuccess: @escaping ([Product]) -> Void, onError: @escaping (Error) -> Void)
+	    @objc func getProductDetails(_ product: Product, onSuccess: @escaping (Product) -> Void, onError: @escaping (Error) -> Void)
+	}
+	
+	extension UxApiGateway: ProductsGateway {
+	    @objc func getProducts(onSuccess: @escaping ([Product]) -> Void, onError: @escaping (Error) -> Void) {
+	        ProductListRequestOperation().execute(onSuccess: onSuccess, onError: onError)
+	    }
+	
+	    @objc func getProductDetails(_ product: Product, onSuccess: @escaping (Product) -> Void, onError: @escaping (Error) -> Void) {
+	        ProductDetailsRequestOperation(product: product).execute(onSuccess: onSuccess, onError: onError)
+	    }
+	}
+	
+	```
 
+2. Define the proper `Router` that define the relevant `Route` for the different services. Note that in this example we implemented a variable and a method: this will allow us to ask for a route using *the dot notation*: `ProductsRouter.list` and `ProductsRouter.details(of: product)` are now available.
 
-## Objective-C support
-All magic is, and will be, written in Swift. The only thing Objective-C needs to be able to interact with are;
-* GatewayFactory
-* Gateway's execute method
+	```
+	struct ProductsRouter {
+	    static var list = RequestRoute(path: "products/")
+	
+	    static func details(of product: Product) -> RequestRoute {
+	        return RequestRoute(path: "products/{id}", parameters: ["id": product.identifier])
+	    }
+	}
+	```
 
-As the result type of the execute method of a `Gateway` is derived from a generic, we can't directly annotate the execute method with `@objc` as it can't be expressed in `Objective-C`. To overcome this a method `objcExecute` has been added to the `Gateway` protocol, which can be used from Objective-C callers. Usage of the method is exactly the same as the normal `execute` method.
+3. Create a new `RequestOperation` for the service you need to use, the new operation will define the proper parser, executor and request:
+ 
+	```
+	class ProductListRequestOperation: NSObject, RequestOperationType {
+	    typealias Result = [Product]
+	
+	    var executor = RequestExecutor()
+	    var parser = ProductListRequestParser()
+	    var request = Request(route: ProductsRouter.list)
+	}
+	```
+
+4. Call proper method on the `UxApiGateway`:
+
+	* In the `onSuccess` completion block handle the data as necessary
+	* In the `onError` completion block handle the error as necessary
+
+    ```
+    [self.gateway getProductsOnSuccess:^(NSArray<Product *> *products) {
+        NSLog(@"Fetched %ld products", (long)products.count);
+
+    } onError:^(NSError *error) {
+        NSLog(@"Error fetching list: %@", error.localizedDescription);
+    }];
+    ```
+
 
 ## Notes
 
+### Objective-C support
+
+All magic is, and will be, written in Swift. The only thing Objective-C needs to be able to interact with is the `UxApiGateway`.
+
 ### Try/Catch & errror handling
 You might have noticed there are a number of `try` and `throw` keywords in there. Correct and complete error handling will be a challenge and there will be `do {} catch {}` closures throughtout the codebase.
+
 I'd recommend us to start using [RxSwift](https://github.com/ReactiveX/RxSwift) to overcome this, but also the need of generic app boilerplate.
 
+For the moment the request to the Gateway can generate a `Error` and we can handle it in the `onError` completion block.
+
+
 ### RequestExecutor
-You've probably noticed `RequestExecutor` is currently only an adapter between gatways and the `RequestClient` which was chosen. It actually adds one extra, the default paramter in the init method; It gives us one line of code to change the HTTP request library used throughout the whole project.
-Extra `ReqeustExecutor` could be the starting point to wrap the output from `RequestClient` into an `Observable` pattern.
 
-### Performing action after request execution
+You've probably noticed `RequestExecutor` is currently only a proxy between `RequestOperation` and the `RequestClient` which was chosen. It gives us the freedom to add business logic to the network layer and change the client as per our needs.
 
-With the current implementation implementing something like caching would happen on each location where a certain `Gateway` is used, which is not prefered.
-To overcome this the `Gateway` could be wrapped into an `Interactor`
+A simple example is the `CacheRequestExecutor`: it add a very simple cache system to show how easy is to extend it. It is also a good point to add [RxSwift](https://github.com/ReactiveX/RxSwift) or implement an `Observable` pattern.
+
+### RequestParser
+
+The parser can be extended or changes as per our needs with one line of code change, just using a different parser in the `RequestOperation`. To show how easy it is, there is a `HeaderRequestParser` added to the project that can parse the response header in place of response parameters.
 
 ## Installation
 
@@ -78,3 +139,9 @@ $ cd iOSArchitecture/Networking
 $ pod install
 $ open Networking.xcworkspace
 ```
+
+
+## Future improvement
+
+- We discussed about adding a `Logger`, which can be used to log information in debug.
+- Create an `Executor` to implement a reactive or observable pattern.

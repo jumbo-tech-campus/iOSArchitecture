@@ -1,0 +1,41 @@
+1. Moved `ResponseData` and `PaginatedResponseData` outside of the Network layer: the network layer should download data, how we use them it's up to the app.
+
+2. I propose to move to a generics implementation instead of the protocol one: in this way it is possible to use the `Gateways` like a puzzle (just defining the type of the other classes) and have logic in 1 place.
+
+3. Regarding the objc implementation, can be generated automatically?
+
+4. I found the naming is confusing, I propose those changes:
+
+PROTOCOL
+In general I like the Apple approach: as per Apple's API Design Guidelines, a protocol should be named as:
+- nouns if they describe what something is doing (e.g. Collection)
+- using the suffixes -able, -ible, or -ing if it describes a capability (e.g. Equatable, ProgressReporting).
+- recognisable and generic way to identify protocol that are generic definitions for classes (we mainly need to use the protocol for dependency injection and testing)
+
+I used in the past and suggest to add the suffix `Type` to make it a generic noun.
+
+Proposal:
+
+    (P) RequestBuilding         => BuilderType
+    (P) RequestGateway          => GatewayType
+    (P) ObjcRequestGateway      => ObjcGatewayType
+    (P) RequestClient           => ClientType
+    (P) RequestExecuting        => ExecutorType
+    ...
+
+5. I don't understand completely the idea of the `Builder` inside the network layer: if it is used to create a request, with its specification, it should be outside of network layer; if it contains information about environment and endpoint, then what about having a struct dedicated for it?
+
+I like this approach (top-down approach):
+    Gateway       --> Entry point for a network service
+    Executor      --> Executes the Request, it will use a Client to do so.
+    Client        --> It is the oen performing the request itself, we can have different client for different libraries (default Apple URLSession, Alamofire...)
+    Request       --> Contains information about the request to be performed.
+    Parser        --> Parse of the Response
+
+    Environment   --> A struct containing information about the current environment (production, development...)
+    API           --> contains end point and parameters used to build the url
+
+6. Renamed 'RequestSpecification' to 'Api'
+
+7. In case of errors, I would like to have a dedicated callback from objc and Swift: for now, if the parsing succeed but final result is nil, callback is called with nil data and, in case of errors, no completion is called.
+I like the approach onCompletion / onError already in the RequestGateway

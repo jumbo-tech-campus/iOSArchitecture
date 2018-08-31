@@ -1,11 +1,3 @@
-//
-//  AppDelegate.m
-//  Networking
-//
-//  Created by Ruud Puts on 02/08/2018.
-//  Copyright © 2018 Ruud Puts. All rights reserved.
-//
-
 #import "AppDelegate.h"
 
 @interface AppDelegate ()

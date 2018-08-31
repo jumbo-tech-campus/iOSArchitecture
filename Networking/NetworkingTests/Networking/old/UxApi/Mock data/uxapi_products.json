@@ -1,0 +1,23 @@
+{
+    "products": {
+        "data": [
+             {
+                 "id": "129647STK",
+                 "title": "Jumbo Komkommer"
+             },
+             {
+                 "id": "129649STK",
+                 "title": "Jumbo Paprika Rood"
+             }
+        ],
+        "offset": 0,
+        "total": 2
+    },
+    "filters": {
+        "data": [
+            {
+                "type": "quickfilter"
+            }
+        ]
+    }
+}

@@ -1,0 +1,21 @@
+PODS:
+  - NetworkModule (0.1.0)
+  - UIModule (0.1.0)
+
+DEPENDENCIES:
+  - NetworkModule (from `../../NetworkModule`)
+  - UIModule (from `../../UIModule`)
+
+EXTERNAL SOURCES:
+  NetworkModule:
+    :path: "../../NetworkModule"
+  UIModule:
+    :path: "../../UIModule"
+
+SPEC CHECKSUMS:
+  NetworkModule: 77134ccea7607cafa4f14ab6ae3891f766ffa678
+  UIModule: 754f734c6efb7994b79d3586b4b0a9406333238c
+
+PODFILE CHECKSUM: 5a4d42ecd21805b01a9d8e3ada6e105b6d8dfc78
+
+COCOAPODS: 1.5.3

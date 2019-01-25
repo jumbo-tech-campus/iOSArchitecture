@@ -1,0 +1,59 @@
+require 'xcodeproj'
+
+platform :ios, '12.0'
+
+# https://github.com/CocoaPods/CocoaPods/issues/8073#issuecomment-422596907
+# https://github.com/CocoaPods/CocoaPods/pull/8105#issuecomment-434767099
+# install! 'cocoapods', :disable_input_output_paths => true
+
+target 'ModuleArchitecture' do
+  use_frameworks!
+
+  pod 'UIModule', :path => 'Modules/UIModule'
+  pod 'NetworkModule', :path => 'Modules/NetworkModule'
+  
+  pod 'FeatureModule', :path => 'Modules/FeatureModule'
+end
+
+post_install do |installer|
+  nested_dependencies = {
+    'FeatureModule' => ['UIModule', 'NetworkModule']
+  }
+
+  # project = Xcodeproj::Project.open(File.join(__dir__, 'Pods', 'Pods.xcodeproj'))
+
+  # puts project.inspect
+  # # puts project.targets.inspect
+
+  # project.targets.each do |target|
+  #   next unless nested_dependencies.keys.include? target.name
+
+  #   puts target.inspect
+
+  #   build_phase = target.frameworks_build_phase
+  #   framework_group = project.frameworks_group
+  #   puts build_phase.inspect
+  #   puts framework_group.inspect
+
+  #   # puts framework_group.inspect
+
+  #   nested_dependencies[target.name].each do |framework|
+  #       path = "${}.framework"
+  #       file_ref = framework_group.new_reference(path)
+  #       file_ref.name = "#{framework}.framework"
+  #       file_ref.source_tree = 'SDKROOT'
+  #       build_file = build_phase.add_file_reference(file_ref)
+  #       if optional
+  #           build_file.settings = { 'ATTRIBUTES' => ['Weak'] }
+  #       end
+  #   end
+  # end
+
+  installer.pods_project.targets.each do |target|
+    if nested_dependencies.keys.include? target.name
+      target.build_configurations.each do |config|
+        config.build_settings['FRAMEWORK_SEARCH_PATHS'] = '$(inherited) ${PODS_CONFIGURATION_BUILD_DIR}/**'
+      end
+    end
+  end
+end

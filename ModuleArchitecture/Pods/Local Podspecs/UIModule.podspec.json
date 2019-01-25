@@ -1,0 +1,22 @@
+{
+  "name": "UIModule",
+  "version": "0.1.0",
+  "summary": "A simple UI styling library.",
+  "homepage": "https://github.com/RuudPuts/Down",
+  "license": {
+    "type": "MIT",
+    "file": "LICENSE"
+  },
+  "authors": {
+    "Ruud Puts": "ruud.puts@gmail.com"
+  },
+  "swift_version": "4.2",
+  "platforms": {
+    "ios": "12.0"
+  },
+  "source": {
+    "git": "https://github.com/RuudPuts/Down.git",
+    "tag": "0.1.0"
+  },
+  "source_files": "UIModule/Source/**/*"
+}

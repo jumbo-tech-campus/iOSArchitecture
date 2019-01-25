@@ -1,0 +1,26 @@
+PODS:
+  - FeatureModule (0.1.0)
+  - NetworkModule (0.1.0)
+  - UIModule (0.1.0)
+
+DEPENDENCIES:
+  - FeatureModule (from `Modules/FeatureModule`)
+  - NetworkModule (from `Modules/NetworkModule`)
+  - UIModule (from `Modules/UIModule`)
+
+EXTERNAL SOURCES:
+  FeatureModule:
+    :path: Modules/FeatureModule
+  NetworkModule:
+    :path: Modules/NetworkModule
+  UIModule:
+    :path: Modules/UIModule
+
+SPEC CHECKSUMS:
+  FeatureModule: b10e1c01bcd476e491bf129b4ffce9496c264c01
+  NetworkModule: 77134ccea7607cafa4f14ab6ae3891f766ffa678
+  UIModule: cc208cc066d0cc821661a1dc0f329d12a1c8c9e5
+
+PODFILE CHECKSUM: 9b5e74295698d558eaa46a58254230fef546e5bd
+
+COCOAPODS: 1.5.3

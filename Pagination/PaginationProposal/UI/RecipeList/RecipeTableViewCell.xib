@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="RecipeTableViewCell" rowHeight="147" id="KGk-i7-Jjw" customClass="RecipeTableViewCell" customModule="JumboPaginator" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="389" height="147"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="389" height="146.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tAx-bp-aHW">
+                        <rect key="frame" x="32" y="32" width="325" height="82.5"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <constraints>
+                    <constraint firstAttribute="bottom" secondItem="tAx-bp-aHW" secondAttribute="bottom" constant="32" id="0pf-nO-zWe"/>
+                    <constraint firstItem="tAx-bp-aHW" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="32" id="JRu-Vg-Dyu"/>
+                    <constraint firstItem="tAx-bp-aHW" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="32" id="P7u-PN-T2f"/>
+                    <constraint firstAttribute="trailing" secondItem="tAx-bp-aHW" secondAttribute="trailing" constant="32" id="t50-ZD-6yM"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="recipeLabel" destination="tAx-bp-aHW" id="YsO-r0-9tF"/>
+            </connections>
+            <point key="canvasLocation" x="170.40000000000001" y="221.73913043478262"/>
+        </tableViewCell>
+    </objects>
+</document>
